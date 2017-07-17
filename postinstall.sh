@@ -27,8 +27,9 @@ NORMAL='\033[00m'
 PURPLE='\033[1;35m'
 LBLUE='\033[1;36m'
 YELLOW='\033[1;33m'
-
 PS1="${BLUE}(${NORMAL}\w${BLUE}) ${NORMAL}\u${BLUE}@\h${RED}\$ ${NORMAL}"
+
+DIALOG=dialog
 PRINTF=`whereis "printf" | tr -s ' ' '\n' | grep "bin/""printf""$" | head -n 1`
 
 # Constants
@@ -79,14 +80,31 @@ show_header(){
 show_listitem(){
     $PRINTF "\033[0;37m$@ $NORMAL\n"
 }
+function SetDialogsus()
+{
+        [ -x "$(which ${DIALOG%% *})" ] || DIALOG=dialog
+    DIALOG=$($DIALOG --menu "Which tool for next run?" 20 60 12 2>&1 \
+            whiptail        "dialog boxes from shell scripts" >/dev/tty \
+            dialog        "dialog boxes from shell with ncurses" \
+            gdialog        "dialog boxes from shell with Gtk" \
+            kdialog        "dialog boxes from shell with Kde" ) || exit
+    clear;echo "Choosed: $DIALOG."
 
-#unmount_all
-show_error "show_error"
-show_info "show_info"
-show_warning "show_warning"
-show_question "show_question"
-show_success "show_success"
-show_header "show_header"
-show_listitem  "show_listitem"
+    echo "Choosed: $DIALOG."
+}
 
-show_warning "show_warning"
+# unmount_all
+# show_error "show_error"
+# show_info "show_info"
+# show_warning "show_warning"
+# show_question "show_question"
+# show_success "show_success"
+# show_header "show_header"
+# show_listitem  "show_listitem"
+# show_warning "show_warning"
+
+show_success 'Init 1.'
+show_success ${DIALOG}
+SetDialogs
+show_success 'Done.'
+show_success ${DIALOG}

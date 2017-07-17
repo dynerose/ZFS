@@ -5,6 +5,20 @@ dir="$(dirname "$0")"
 UTILS="$dir/data/utilities.list"
 
 # Install preferred utilities using the list of packages 'data/utilities.list'
+function SetDialogs()
+{
+    show_info 'SetDialogs ...'
+
+        [ -x "$(which ${DIALOG%% *})" ] || DIALOG=dialog
+    DIALOG=$($DIALOG --menu "Which tool for next run?" 20 60 12 2>&1 \
+            whiptail        "dialog boxes from shell scripts" >/dev/tty \
+            dialog        "dialog boxes from shell with ncurses" \
+            gdialog        "dialog boxes from shell with Gtk" \
+            kdialog        "dialog boxes from shell with Kde" ) || exit
+    clear;
+    #echo "Choosed: $DIALOG."
+}
+
 function unmount_all() {
     printf "\nUnmounting All attached to %s & %s..." "$ZFSMNTPOINT"
     # TODO: Change to ZFSMNTPOINT

@@ -11,3 +11,17 @@
 # TODO: --mdm raid boot
 
 
+# Constants
+readonly VERSION="0.1 Alpha"
+readonly TRUE=0
+readonly FALSE=1
+
+readonly REQ_PKGS="debootstrap gdisk zfs zfs-initramfs"
+readonly ZFSPOOL="rpool"
+readonly ZFSMNTPOINT="/mnt"
+readonly ZFS_CRYPT="rpool_crypt"
+# end / Constants
+
+# Initialize / Variable
+
+# end / Variable

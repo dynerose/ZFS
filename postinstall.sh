@@ -83,9 +83,5 @@ show_listitem(){
 }
 
 # show_warning "show_warning"
-
-show_success 'Init 1.'
-show_success ${DIALOG}
 SetDialogs
-show_success 'Done.'
-show_success ${DIALOG}
+check_dependencies

@@ -17,14 +17,19 @@ dir="$(dirname "$0")"
 . $dir/functions/utilities
 
 # Prompt Colors
-BGREEN='\[\033[1;32m\]'
-GREEN='\[\033[0;32m\]'
-BRED='\[\033[1;31m\]'
-RED='\[\033[0;31m\]'
-BBLUE='\[\033[1;34m\]'
-BLUE='\[\033[0;34m\]'
-NORMAL='\[\033[00m\]'
+BGREEN='\033[1;32m]'
+GREEN='\033[0;32m]'
+BRED='\033[1;31m'
+RED='\033[0;31m]'
+BBLUE='\033[1;34m]'
+BLUE='\033[0;34m]'
+NORMAL='\033[00m]'
+PURPLE='\033[1;35m'
+LBLUE='\033[1;36m'
+YELLOW='\033[1;33m'
+
 PS1="${BLUE}(${NORMAL}\w${BLUE}) ${NORMAL}\u${BLUE}@\h${RED}\$ ${NORMAL}"
+PRINTF=`whereis "printf" | tr -s ' ' '\n' | grep "bin/""printf""$" | head -n 1`
 
 # Constants
 readonly VERSION="0.1 Alpha"
@@ -52,26 +57,34 @@ VAR_MINDISK=2
 
 #----- Fancy Messages -----#
 show_error(){
-echo -e "\033[1;31m$@\033[m" 1>&2
+echo -e "$BRED@$NORMAL" 1>&2
 033[1;31m
 }
 show_info(){
-echo -e "\033[1;32m$@\033[0m"
+  echo -e "$BGREEN$@$NORMAL"
+
 }
 show_warning(){
-echo -e "\033[1;33m$@\033[0m"
+echo -e "$YELLOW$@$NORMAL"
+$PRINTF "$BGREEN ** deleting $BGREEN file\033[1;35m...$NORMAL\n"
 }
 show_question(){
-echo -e "\033[1;34m$@\033[0m"
+echo -e "$BBLUE$@$NORMAL"
 }
 show_success(){
-echo -e "\033[1;35m$@\033[0m"
+echo -e "$PURPLE$@$NORMAL"
 }
 show_header(){
-echo -e "\033[1;36m$@\033[0m"
+echo -e "$LBLUE$@$NORMAL"
 }
 show_listitem(){
-echo -e "\033[0;37m$@\033[0m"
+echo -e "\033[0;37m$@$NORMAL"
 }
 
 unmount_all
+show_warning "show_warning"
+show_question "show_question"
+show_success "show_success"
+show_header "show_header"
+show_listitem  "show_listitem"
+

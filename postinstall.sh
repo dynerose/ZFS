@@ -14,6 +14,7 @@
 
 dir="$(dirname "$0")"
 
+. $dir/functions/check
 . $dir/functions/utilities
 
 # Prompt Colors
@@ -80,27 +81,7 @@ show_header(){
 show_listitem(){
     $PRINTF "\033[0;37m$@ $NORMAL\n"
 }
-function SetDialogsus()
-{
-        [ -x "$(which ${DIALOG%% *})" ] || DIALOG=dialog
-    DIALOG=$($DIALOG --menu "Which tool for next run?" 20 60 12 2>&1 \
-            whiptail        "dialog boxes from shell scripts" >/dev/tty \
-            dialog        "dialog boxes from shell with ncurses" \
-            gdialog        "dialog boxes from shell with Gtk" \
-            kdialog        "dialog boxes from shell with Kde" ) || exit
-    clear;echo "Choosed: $DIALOG."
 
-    echo "Choosed: $DIALOG."
-}
-
-# unmount_all
-# show_error "show_error"
-# show_info "show_info"
-# show_warning "show_warning"
-# show_question "show_question"
-# show_success "show_success"
-# show_header "show_header"
-# show_listitem  "show_listitem"
 # show_warning "show_warning"
 
 show_success 'Init 1.'

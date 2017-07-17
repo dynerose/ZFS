@@ -57,35 +57,36 @@ VAR_MINDISK=2
 
 #----- Fancy Messages -----#
 show_error(){
-echo -e "$BRED@$NORMAL" 1>&2
-033[1;31m
+# echo -e 
+    $PRINTF "$BRED  ** error ---> $@ $NORMAL\n"
 }
 show_info(){
-  echo -e "$BGREEN$@$NORMAL"
+    $PRINTF "$BGREEN ** info ---> $@ $NORMAL\n"
 
 }
 show_warning(){
-# echo -e "$YELLOW$@$NORMAL"
-$PRINTF "$YELLOW ** warning ---> $BGREEN $@ $YELLOW.. $NORMAL\n"
+    $PRINTF "$YELLOW ** warning ---> $BGREEN $@ $YELLOW.. $NORMAL\n"
 }
 show_question(){
-echo -e "$BBLUE$@$NORMAL"
+    $PRINTF "$BBLUE ** question ---> $@ $NORMAL\n"
 }
 show_success(){
-echo -e "$PURPLE$@$NORMAL"
+    $PRINTF "$PURPLE ** succes ---> $@ $NORMAL\n"
 }
 show_header(){
-echo -e "$LBLUE$@$NORMAL"
+    $PRINTF "$LBLUE $@ $NORMAL\n"
 }
 show_listitem(){
-echo -e "\033[0;37m$@$NORMAL"
+    $PRINTF "\033[0;37m$@ $NORMAL\n"
 }
 
 #unmount_all
-#show_warning "show_warning"
-#show_question "show_question"
-#show_success "show_success"
-#show_header "show_header"
-#show_listitem  "show_listitem"
+show_error "show_error"
+show_info "show_info"
+show_warning "show_warning"
+show_question "show_question"
+show_success "show_success"
+show_header "show_header"
+show_listitem  "show_listitem"
 
 show_warning "show_warning"

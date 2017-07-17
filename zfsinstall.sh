@@ -5,3 +5,4 @@ ls
 ls
 rm
 echo ""
+echo "2"

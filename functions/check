@@ -49,4 +49,5 @@ function check_dependencies {
 	fi
 	done
 	show_info "Proceeding."
+	show_info "This is a package $REQ_PKGS"
 }

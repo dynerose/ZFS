@@ -16,6 +16,7 @@ function check_fail {
 
 # Check for and install required packages for this script set.
 function check_dependencies {
+	[ `which dialog` ] $$ echo "dialog : installed" || sudo apt-get install -y dialog
 	show_info "Checking dependencies..."
 	for package in $(cat $DEPS)
 	do 

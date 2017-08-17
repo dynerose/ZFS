@@ -1,0 +1,18 @@
+The following stock files are modified
+/usr/share/initramfs-tools/scripts/local-top/cryptroot            (if using LUKS)
+/etc/default/grub
+/etc/default/locale
+/etc/crypttab                                                     (if using LUKS)
+/etc/modules
+/etc/timezone
+/etc/localtime
+/etc/hostname
+/etc/hosts
+/etc/fstab
+/etc/bash.bashrc
+/etc/skel/.bashrc
+/etc/network/interfaces
+/etc/apt/sources.list
+/etc/mdadm/mdadm.conf                                             (if using LUKS)
+/etc/initramfs-tools/initramfs.conf                               (if using LUKS)
+/etc/initramfs-tools/conf.d/resume

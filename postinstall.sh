@@ -16,6 +16,8 @@ dir="$(dirname "$0")"
 
 . $dir/functions/check
 . $dir/functions/utilities
+. $dir/doc/changes.list
+. $dir/doc/changescreated.list
 
 # Prompt Colors
 BGREEN='\033[1;32m'
@@ -95,5 +97,6 @@ show_listitem(){
 }
 
 # show_warning "show_warning"
-SetDialogs
-check_dependencies
+# SetDialogs
+# check_dependencies
+show_changes

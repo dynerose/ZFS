@@ -3,16 +3,45 @@
 dir="$(dirname "$0")"
 
 DEPS="$dir/data/dependencies.list"
-
+CHANGES="$dir/doc/changes.list"
+CHANGESCREATED="$dir/doc/changescreated.list"
 
 # Check if command failed, if true abort
-function check_fail {
-	EXITSTATUS=$1
-	if [[ $EXITSTATUS != 0 ]]; then
-		show_error "Something may have went wrong during the last command. Returning."
-		sleep 3s && main
-	fi
+function show_changes {
+	show_header "Show changes ..."
+
+	while read -r line
+	do
+	    name="$line"
+	    show_header "'$line'"
+	done < "$CHANGES"
+
+	show_header "Show created ..."
+
+        while read -r line
+        do
+            name="$line"
+            show_header "'$line'"
+        done < "$CHANGESCREATED"
+
+		# show_info $package ' is changes'
+#	show_info "Show new file ..."
+#        for package in $(cat $CHANGESCREATED)
+#        do
+#                # show_info $package ' is new file'#
+#		echo  $package
+#        done
+
 }
+
+function check_fail {
+        EXITSTATUS=$1
+        if [[ $EXITSTATUS != 0 ]]; then
+                show_error "Something may have went wrong during the last command. Returning."
+                sleep 3s && main
+        fi
+}
+
 
 # Check for and install required packages for this script set.
 function check_dependencies {

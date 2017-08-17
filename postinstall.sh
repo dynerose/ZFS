@@ -37,7 +37,7 @@ PRINTF=`whereis "printf" | tr -s ' ' '\n' | grep "bin/""printf""$" | head -n 1`
 readonly VERSION="0.1 Alpha"
 readonly TRUE=0
 readonly FALSE=1
-readonly REQ_PKGS="debootstrap gdisk zfs zfs-initramfs"
+readonly REQ_PKGS="cryptsetyp debootstrap gdisk zfs zfs-initramfs mdadm"
 export readonly ZFSPOOL="rpool"
 export readonly ZFSMNTPOINT="/mnt"
 export readonly ZFS_CRYPT="rpool_crypt"
@@ -52,9 +52,13 @@ VAR_VERBOSE=0
 VAR_USERNAME=username
 VAR_PASSWORD=password
 
-VAR_MINDISK=2
+VAR_ZFSMINDISK=1
+VAR_ZFSTYPE="none"
+VAR_ZFSDISKCOUNT=0
+VAR_ZFSDISKLIST[0]=""
 
-
+VAR_UBUNTU_VERSION=17.04
+VAR_SUITE=zesty
 # end / Variable
 
 #----- Fancy Messages -----#

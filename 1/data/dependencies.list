@@ -1,8 +1,0 @@
-debootstrap
-gdisk
-zfs
-zfs-initramfs
-curl
-software-properties-common
-dialog
-xterm

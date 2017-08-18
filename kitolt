@@ -2,4 +2,5 @@ git config --global user.name "dynerose"
 git add *
 git commit -m "Commit message"
 git push
-
+#git push origin master
+#git push --set-upstream origin master
